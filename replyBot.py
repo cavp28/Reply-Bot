@@ -5,23 +5,6 @@ from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 import random
 
-# Setiar el token del bot en el updater
-# Set the bot's token
-updater = Updater(token='TOKEN')
-dispatcher = updater.dispatcher
-
-# Respuestas que quiere que el bot de
-# Answers List
-listaRespuestas = ["RESPUESTAS"]
-
-# Palabras a las que el bot va a reaccionar
-# Words that will trigger the bot
-menciones = ["Hi","No","Yes","Oui"]
-
-# convertir a unicode - Convert to unicode
-listaMenciones = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in menciones]
-
-
 # Funciones.
 def test(bot, update):
 	bot.sendMessage(chat_id=update.message.chat_id, 
@@ -44,6 +27,23 @@ def reply(bot, update):
     except UnicodeEncodeError:
         bot.sendMessage(chat_id=update.message.chat_id, 
         text="Error")
+
+# Setiar el token del bot en el updater
+# Set the bot's token
+updater = Updater(token='TOKEN')
+dispatcher = updater.dispatcher
+
+# Respuestas que quiere que el bot de
+# Answers List
+listaRespuestas = ["RESPUESTAS"]
+
+# Palabras a las que el bot va a reaccionar
+# Words that will trigger the bot
+menciones = ["Hi","No","Yes","Oui"]
+
+# convertir a unicode - Convert to unicode
+listaMenciones = [i.decode('UTF-8') if isinstance(i, basestring) else i for i in menciones]
+
 
 # Con los CommandHandler se llaman los comandos con "/"
 # CommandHanlder will react to words that begins with "/"
